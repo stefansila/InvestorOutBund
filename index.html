@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <link rel="apple-touch-icon" href="/assets/iphone-icon.png" />
+    
+    <!-- Meta Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InvestorOutBound | Home</title>
+    <meta name="description" content="InvestorOutBound offers the world's most comprehensive and up-to-date investor database, featuring over 2 million investors, 200k active funds, and AI-powered insights. Book a demo and access real-time data, advanced analytics, and global financial intelligence." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://investoroutbound.com/" />
+    <meta property="og:title" content="InvestorOutBound | Home" />
+    <meta property="og:description" content="InvestorOutBound offers the world's most comprehensive and up-to-date investor database, featuring over 2 million investors, 200k active funds, and AI-powered insights. Book a demo and access real-time data, advanced analytics, and global financial intelligence." />
+    <meta property="og:image" content="/assets/share_image.png" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://investoroutbound.com/" />
+    <meta property="twitter:title" content="InvestorOutBound | Home" />
+    <meta property="twitter:description" content="InvestorOutBound offers the world's most comprehensive and up-to-date investor database, featuring over 2 million investors, 200k active funds, and AI-powered insights. Book a demo and access real-time data, advanced analytics, and global financial intelligence." />
+    <meta property="twitter:image" content="/assets/share_image.png" />
+    
+    <!-- SmoothScroll -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js" type="text/javascript"></script>
+    
+    <!-- Calendly -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Essential Scripts Only -->
+    <script>
+      // SmoothScroll configuration
+      SmoothScroll({ 
+        animationTime    : 600,  
+        stepSize         : 80,   
+        accelerationDelta: 30,  
+        accelerationMax  : 2,    
+        keyboardSupport  : true, 
+        arrowScroll      : 50,  
+        pulseAlgorithm   : true, 
+        pulseScale       : 4,  
+        touchpadSupport  : true, 
+      }); 
+    </script>
+
+    <script>
+      // Calendly popup
+      $(document).on('click','[button-action="open-calendly"]',function(e){
+        e.preventDefault();
+        Calendly.initPopupWidget({url: 'https://calendly.com/siladigital/15-minute-introductory-call'});
+        return false;
+      });
+    </script>
+
+    <script>
+      // Navbar active state
+      $(document).ready(function() {
+        function toggleActiveClassOnScroll() {
+          if ($(window).scrollTop() === 0) {
+            $('.navbar').removeClass('active');
+          } else {
+            $('.navbar').addClass('active');
+          }
+        }
+      
+        toggleActiveClassOnScroll();
+
+        $(window).scroll(function() {
+          toggleActiveClassOnScroll();
+        });
+      });
+    </script>
+
+    <script>
+      // Footer link smooth scroll
+      $(document).ready(function() {
+        $('.footer-link').click(function(e) {
+          e.preventDefault(); 
+          var targetSection = $(this).data('target');
+          var offset = 86; 
+
+          var sectionOffset = $(targetSection).offset().top - offset;
+
+          $('html, body').animate({
+            scrollTop: sectionOffset
+          }, 1000);
+        });
+      });
+    </script>
+
+    <script>
+      // Laptop animation
+      $(window).on('scroll', function () {
+        var scrollTop = $(window).scrollTop();
+        var laptopElement = $('.laptop-abs');
+        if (laptopElement.length > 0) {
+          var elementOffset = laptopElement.offset();
+          if (elementOffset) {
+            var windowHeight = $(window).height();
+            if (elementOffset.top < scrollTop + 50 + windowHeight && elementOffset.top > scrollTop + 50) {
+              laptopElement.addClass('laptop-abs-active');
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
